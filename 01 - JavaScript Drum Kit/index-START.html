@@ -58,6 +58,93 @@
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
 <script>
+window.addEventListener("keydown", function (event) {
+
+  switch (event.key) {
+    case "a":
+    document.querySelector('div[data-key="65"]').classList.add('playing');
+    document.querySelector('audio[data-key="65"]').play();
+      break;
+    case "s":
+    document.querySelector('div[data-key="83"]').classList.add('playing');
+    document.querySelector('audio[data-key="65"]').play();
+      break;
+    case "d":
+    document.querySelector('div[data-key="68"]').classList.add('playing');
+    document.querySelector('audio[data-key="65"]').play();
+      break;
+    case "f":
+    document.querySelector('div[data-key="70"]').classList.add('playing');
+    document.querySelector('audio[data-key="70"]').play();
+      break;
+    case "g":
+    document.querySelector('div[data-key="71"]').classList.add('playing');
+    document.querySelector('audio[data-key="71"]').play();
+      break;
+    case "h":
+    document.querySelector('div[data-key="72"]').classList.add('playing');
+    document.querySelector('audio[data-key="72"]').play();
+      break;
+    case "j":
+    document.querySelector('div[data-key="74"]').classList.add('playing');
+    document.querySelector('audio[data-key="74"]').play();
+        break;
+    case "k":
+    document.querySelector('div[data-key="75"]').classList.add('playing');
+    document.querySelector('audio[data-key="75"]').play();
+          break;
+    case "l":
+    document.querySelector('div[data-key="76"]').classList.add('playing');
+    document.querySelector('audio[data-key="76"]').play();
+          break;
+    default:
+      return; // Quit when this doesn't handle the key event.
+  }
+});
+
+window.addEventListener("keyup", function (event) {
+
+  switch (event.key) {
+    case "a":
+    document.querySelector('div[data-key="65"]').classList.remove('playing');
+    document.querySelector('audio[data-key="65"]').pause();
+      break;
+    case "s":
+    document.querySelector('div[data-key="83"]').classList.remove('playing');
+    document.querySelector('audio[data-key="83"]').pause();
+      break;
+    case "d":
+    document.querySelector('div[data-key="68"]').classList.remove('playing');
+    document.querySelector('audio[data-key="68"]').pause();
+      break;
+    case "f":
+    document.querySelector('div[data-key="70"]').classList.remove('playing');
+    document.querySelector('audio[data-key="70"]').pause();
+      break;
+    case "g":
+    document.querySelector('div[data-key="71"]').classList.remove('playing');
+    document.querySelector('audio[data-key="71"]').pause();
+      break;
+    case "h":
+    document.querySelector('div[data-key="72"]').classList.remove('playing');
+    document.querySelector('audio[data-key="72"]').pause();
+      break;
+    case "j":
+    document.querySelector('div[data-key="74"]').classList.remove('playing');
+    document.querySelector('audio[data-key="74"]').pause();
+        break;
+    case "k":
+    document.querySelector('div[data-key="75"]').classList.remove('playing');
+    document.querySelector('audio[data-key="75"]').pause();
+          break;
+    case "l":
+    document.querySelector('div[data-key="76"]').classList.remove('playing');
+    document.querySelector('audio[data-key="76"]').pause();
+          break;
+    default:
+      return; // Quit when this doesn't handle the key event.
+  }
+});
 
 </script>
 
