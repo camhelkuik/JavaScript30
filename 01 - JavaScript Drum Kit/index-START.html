@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="background-image">
 <head>
   <meta charset="UTF-8">
   <title>JS Drum Kit</title>
@@ -69,7 +69,13 @@ function removePlaying(event) {
   var key = document.querySelector(`div[data-key="${event.keyCode}"]`);
   var audio = document.querySelector(`audio[data-key="${event.keyCode}"]`);
 
-  key.classList.remove('playing');
+  if (event.keyCode == "32"){
+    var main = document.querySelector(`html`);
+    main.classList.toggle('background-image');
+    main.classList.toggle('background-image2');
+  } else{
+    key.classList.remove('playing');
+  }
 };
 
 function playSound(event) {
