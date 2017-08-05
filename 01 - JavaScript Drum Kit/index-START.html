@@ -57,15 +57,16 @@
   <audio data-key="75" src="sounds/tom.wav"></audio>
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
-<script>
-//Whats the diff between const and var
-//Why does the ${} work, I thought the $ ment jquery
-//How to know when to use `` instead of ''
-//Working well, causes console errors when any other button is hit
-//the FINISHED one does not have console errors, why?
-//why use transiionend?
+  <script>
+ //Whats the diff between const and var
+ //Why does the ${} work, I thought the $ ment jquery - turns out this is an ES6 thing along with the ``. Is there something
+ //   similar in ES5?
+ //How to know when to use `` instead of ''
+ //Working well, causes console errors when any other button is hit
+ //   the !audio if statement prevents the console errors, by not running the function.
+ //why use transiionend?
 
-function removePlaying(event) {
+ function removePlaying(event) {
   var key = document.querySelector(`div[data-key="${event.keyCode}"]`);
   var audio = document.querySelector(`audio[data-key="${event.keyCode}"]`);
 
@@ -73,7 +74,9 @@ function removePlaying(event) {
     var main = document.querySelector(`html`);
     main.classList.toggle('background-image');
     main.classList.toggle('background-image2');
-  } else{
+  }else if (!audio) {
+    return; //stop the function from running all together if there is no audio associated with that keyCode\
+  }else{
     key.classList.remove('playing');
   }
 };
@@ -81,6 +84,8 @@ function removePlaying(event) {
 function playSound(event) {
   var key = document.querySelector(`div[data-key="${event.keyCode}"]`);
   var audio = document.querySelector(`audio[data-key="${event.keyCode}"]`);
+
+  if (!audio)return; //stop the function from running all together if there is no audio associated with that keyCode
 
   key.classList.add('playing');
   audio.currentTime = 0;
