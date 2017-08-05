@@ -59,12 +59,15 @@
 
   <script>
  //Whats the diff between const and var
- //Why does the ${} work, I thought the $ ment jquery - turns out this is an ES6 thing along with the ``. Is there something
- //   similar in ES5?
+ //   thre is a difference, but also seems to just be preference?
+ //Why does the ${} work, I thought the $ ment jquery
+ //   turns out this is an ES6 thing along with the ``. Is there something similar in ES5?
  //How to know when to use `` instead of ''
  //Working well, causes console errors when any other button is hit
  //   the !audio if statement prevents the console errors, by not running the function.
  //why use transiionend?
+ //   easier then doing a keyup event. Listens to when the transition on the playing class finishes. Once that transition ends
+ //   it then performs the next function which removes the playing class.
 
  function removePlaying(event) {
   var key = document.querySelector(`div[data-key="${event.keyCode}"]`);
