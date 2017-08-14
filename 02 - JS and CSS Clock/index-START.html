@@ -141,10 +141,11 @@
     let newColor = '#';
 
     for (var i = 0; i < 6; i++){
-      var math = Math.round(Math.random()*14);
-      var makeHex = hexValues[math];
+      var cat = Math.round(Math.random()*14);
+      var makeHex = hexValues[cat];
 
       newColor += makeHex;
+      //newColor = newColor + makeHex;
     }
 
     secondHand.style.backgroundColor = newColor;
