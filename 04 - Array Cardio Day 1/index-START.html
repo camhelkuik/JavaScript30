@@ -30,16 +30,52 @@
     const people = ['Beck, Glenn', 'Becker, Carl', 'Beckett, Samuel', 'Beddoes, Mick', 'Beecher, Henry', 'Beethoven, Ludwig', 'Begin, Menachem', 'Belloc, Hilaire', 'Bellow, Saul', 'Benchley, Robert', 'Benenson, Peter', 'Ben-Gurion, David', 'Benjamin, Walter', 'Benn, Tony', 'Bennington, Chester', 'Benson, Leana', 'Bent, Silas', 'Bentsen, Lloyd', 'Berger, Ric', 'Bergman, Ingmar', 'Berio, Luciano', 'Berle, Milton', 'Berlin, Irving', 'Berne, Eric', 'Bernhard, Sandra', 'Berra, Yogi', 'Berry, Halle', 'Berry, Wendell', 'Bethea, Erin', 'Bevan, Aneurin', 'Bevel, Ken', 'Biden, Joseph', 'Bierce, Ambrose', 'Biko, Steve', 'Billings, Josh', 'Biondo, Frank', 'Birrell, Augustine', 'Black, Elk', 'Blair, Robert', 'Blair, Tony', 'Blake, William'];
 
     // Array.prototype.filter()
+    //creates new array with all elements that pass the test
     // 1. Filter the list of inventors for those who were born in the 1500's
+    var bornEarly = inventors.filter(function(inventor){
+      if (inventor.year >= 1500 && inventor.year < 1600){
+        return true;
+      };
+    });
+    console.log('this is number 1');
+    console.table(bornEarly);
 
     // Array.prototype.map()
+    //creates new array with the results, original array stays the same
     // 2. Give us an array of the inventors' first and last names
+    var firstLast = inventors.map(function(inventor){
+      return inventor.first +' ' + inventor.last;
+    });
+    console.log('this is number 2');
+    console.log(firstLast);
 
     // Array.prototype.sort()
+    //sorts the elements of an array  in place  and returns the array. Not necessarily "stable"?
+    //can be used with or without a function
     // 3. Sort the inventors by birthdate, oldest to youngest
+    var oldestYoungest = inventors.sort(function(a, b){
+      return a.year - b.year
+    });
+    console.log('this is number 3');
+    console.table(oldestYoungest);
+
+    //const ordered = inventors.sort(function(a, b) {
+    //   if(a.year > b.year) {
+    //     return 1;
+    //   } else {
+    //     return -1;
+    //   }
+    // });
 
     // Array.prototype.reduce()
+    //watched the video for this one, did not understand reduce
+    //applies a function against an accumulator and each element in the array to reduce it to a single value
     // 4. How many years did all the inventors live?
+    var yearsLived = inventors.reduce((total, inventor) => {
+      return total + (inventor.passed - inventor.year);
+    }, 0);
+    console.log('this is number 4');
+    console.log(yearsLived);
 
     // 5. Sort the inventors by years lived
 
