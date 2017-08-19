@@ -78,18 +78,56 @@
     console.log(yearsLived);
 
     // 5. Sort the inventors by years lived
+    var sortYearLived = inventors.sort(function(a, b){
+      var totalA = a.passed - a.year;
+      var totalB = b.passed - b.year;
+      if (totalA > totalB){
+        return -1;
+      } else{
+        return 1;
+      }
+    });
+    console.log('This is number 5');
+    console.table(sortYearLived);
 
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
 
 
+    // const category = document.querySelector('.mw-category');
+    // const links = Array.from(category.querySelectorAll('a'));
+    // //was a node list which does not have the .map on it, so we had to change it to an array
+    //
+    // const de = links.map(function(link){
+    //   return link.textContent;
+    // });
+    //
+    // de.filter(function(streetName){
+    //   if (streetName.includes('de')){
+    //     return streetName
+    //   }
+    // });
+
+
     // 7. sort Exercise
     // Sort the people alphabetically by last name
+
+    //Why did he do the long way around? According to the MDN docs there was no need for the other way, sort will just work
+    console.log('this is number 7');
+    console.log(people.sort());
 
     // 8. Reduce Exercise
     // Sum up the instances of each of these
     const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
+    const transportation = data.reduce(function(obj, item) {
+      if (!obj[item]) {
+        obj[item] = 0;
+      }
+      obj[item]++;
+      return obj;
+    }, {});
 
+    console.log(transportation);
   </script>
 </body>
 </html>
