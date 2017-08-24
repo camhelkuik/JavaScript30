@@ -53,19 +53,27 @@
     //sorts the elements of an array  in place  and returns the array. Not necessarily "stable"?
     //can be used with or without a function
     // 3. Sort the inventors by birthdate, oldest to youngest
-    var oldestYoungest = inventors.sort(function(a, b){
-      return a.year - b.year
+    var oldestYoungest = inventors.sort(function(inventor1, inventor2){
+      return inventor1.year - inventor2.year
     });
     console.log('this is number 3');
     console.table(oldestYoungest);
 
-    //const ordered = inventors.sort(function(a, b) {
-    //   if(a.year > b.year) {
-    //     return 1;
+    //const ordered = inventors.sort(function(inventor1, inventor2) {
+    //   if(inventor1.year > inventor2.year) {
+    //     return 1; just needs to be positive
     //   } else {
-    //     return -1;
+    //     return -1; just needs to be negative
     //   }
     // });
+
+    //   function compare(a, b) {
+    // if (a is less than b by some ordering criterion) {
+    //   return -1;
+    // }
+    // if (a is greater than b by the ordering criterion) {
+    //   return 1;
+    // }
 
     // Array.prototype.reduce()
     //watched the video for this one, did not understand reduce
@@ -94,19 +102,19 @@
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
 
 
-    // const category = document.querySelector('.mw-category');
-    // const links = Array.from(category.querySelectorAll('a'));
-    // //was a node list which does not have the .map on it, so we had to change it to an array
-    //
-    // const de = links.map(function(link){
-    //   return link.textContent;
-    // });
-    //
-    // de.filter(function(streetName){
-    //   if (streetName.includes('de')){
-    //     return streetName
-    //   }
-    // });
+    const category = document.querySelector('.mw-category');
+    const links = Array.from(category.querySelectorAll('a'));
+    //was a node list which does not have the .map on it, so we had to change it to an array
+    
+    const de = links.map(function(link){
+      return link.textContent;
+    });
+    
+    de.filter(function(streetName){
+      if (streetName.includes('de')){
+        return streetName
+      }
+    });
 
 
     // 7. sort Exercise
@@ -119,12 +127,14 @@
     // 8. Reduce Exercise
     // Sum up the instances of each of these
     const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
-    const transportation = data.reduce(function(obj, item) {
-      if (!obj[item]) {
-        obj[item] = 0;
+    const transportation = data.reduce(function(accumulatorObj, item) {
+      if (!accumulatorObj[item]) {
+        accumulatorObj[item] = 0;
       }
-      obj[item]++;
-      return obj;
+      accumulatorObj[item]++;
+      let newAccumulatorToReturn = accumulatorObj;
+      return newAccumulatorToReturn;
+     //return accumulatorObj;
     }, {});
 
     console.log(transportation);
