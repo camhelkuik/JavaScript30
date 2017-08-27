@@ -17,6 +17,52 @@
 <script>
 const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
 
+const cities = [];
+
+//fetch before the .then is just a promise.
+//the response is just a blob of information, doesn't know what the response is. HAve to convert the response to json.
+fetch(endpoint).then(function(response){
+  return response.json();
+}).then(function(data){
+  return cities.push(...data);
+});
+//push does not work its a mess of arrays. Have to use spread? Could use let instead of const
+function findMatches(wordToMatch, cities){
+  return cities.filter(function(place){
+    //need to pass in a regex to make it a regular expression, global, insensitive = lower or upper
+    const regex = new RegExp(wordToMatch, 'gi');
+    return place.city.match(regex) || place.state.match(regex);
+  });
+}
+
+function numberWithCommas(x) {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+}
+
+function displayMatches(){
+  const matchArray = findMatches(this.value, cities);
+  const html = matchArray.map(function(place){
+    const regex = new RegExp(this.value, 'gi');
+    const cityName = place.city.replace(regex, `<span class="h1">${this.value}</span>`);
+    const stateName = place.state.replace(regex, `<span class="h1">${this.value}</span>`);
+    return `
+      <li>
+        <span class="name">${cityName}, ${stateName}</span>
+        <span class="population">${numberWithCommas(place.population)}</span>
+      </li>
+    `;
+  }).join('');
+  suggestions.innerHtml = html;
+}
+
+const search  = document.querySelector('.search');
+const suggestions  = document.querySelector('.suggestions');
+
+search.addEventListener('change', displayMatches);
+search.addEventListener('keyup', displayMatches);
+
+
+
 </script>
   </body>
 </html>
