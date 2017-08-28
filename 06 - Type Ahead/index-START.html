@@ -27,6 +27,7 @@ fetch(endpoint).then(function(response){
   return cities.push(...data);
 });
 //push does not work its a mess of arrays. Have to use spread? Could use let instead of const
+
 function findMatches(wordToMatch, cities){
   return cities.filter(function(place){
     //need to pass in a regex to make it a regular expression, global, insensitive = lower or upper
@@ -41,10 +42,11 @@ function numberWithCommas(x) {
 
 function displayMatches(){
   const matchArray = findMatches(this.value, cities);
+  const myThis = this;
   const html = matchArray.map(function(place){
-    const regex = new RegExp(this.value, 'gi');
-    const cityName = place.city.replace(regex, `<span class="h1">${this.value}</span>`);
-    const stateName = place.state.replace(regex, `<span class="h1">${this.value}</span>`);
+    const regex = new RegExp(myThis.value, 'gi');
+    const cityName = place.city.replace(regex, `<span class="h1">${myThis.value}</span>`);
+    const stateName = place.state.replace(regex, `<span class="h1">${myThis.value}</span>`);
     return `
       <li>
         <span class="name">${cityName}, ${stateName}</span>
@@ -52,7 +54,7 @@ function displayMatches(){
       </li>
     `;
   }).join('');
-  suggestions.innerHtml = html;
+  suggestions.innerHTML = html;
 }
 
 const search  = document.querySelector('.search');
