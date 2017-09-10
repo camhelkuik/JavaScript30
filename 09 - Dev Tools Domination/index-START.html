@@ -18,28 +18,55 @@
     }
 
     // Regular
+    console.log("hello");
 
     // Interpolated
+    console.log("I am a %s string", 'I was interpolated');
+    //ES 6 = console.log('Use the ${variable}');
 
     // Styled
+    console.log("%c I am so stylish", 'font-size: 25px; background-color: green;');
 
     // warning!
+    console.warn('OH no!!');
 
     // Error :|
+    console.error('Error doc robinson!');
 
     // Info
+    console.info("I am a fun fact or useful information!");
 
     // Testing
+    console.assert(1 === 1, "this wont show because true");
+    console.assert(1 === 2, "this will show becasue WRONG!");
 
     // clearing
+    //console.clear(), clers the console.
 
     // Viewing DOM Elements
+    const p = document.querySelector('p');
+    console.dir(p);
 
     // Grouping together
+    //can use group or groupcollapsed
+    dogs.forEach(dog => {
+      console.groupCollapsed(`${dog.name}`);
+      console.log(`This is ${dog.name}`);
+      console.log(`${dog.name} is ${dog.age} years old`);
+      console.log(`${dog.name} is ${dog.age * 7} dog years old`);
+      console.groupEnd(`${dog.name}`);
+    })
 
     // counting
+    console.count('I am');
 
     // timing
+    console.time('fetching data');
+    fetch('https://api.github.com/users/wesbos')
+      .then(data => data.json())
+      .then(data => {
+        console.timeEnd('fetching data');
+      });
 
   </script>
 </body>
