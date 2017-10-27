@@ -1,12 +1,42 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>Key Detection</title>
   <script type="text/javascript" src="http://www.cornify.com/js/cornify.js"></script>
+  <style>
+    .cat {
+      background-image: url("https://yt3.ggpht.com/wm5LCci89chQvQ0oeDl-QxDMwCFTu6v0YiSEytYinTbG-hU_iLP9Jqc6cC57SbNLGxIlOfAhsrfE7BG_HO8=s900-nd-c-c0xffffffff-rj-k-no");
+    }
+
+    #body {
+      height: 900px;
+      width: 900px;
+      margin: auto;
+    }
+  </style>
 </head>
 <body>
+  <div id="body"></div>
 <script>
+  const pressed = [];
+  const secretCode = "cameron";
+  window.addEventListener('keyup', (e) => {
+    pressed.push(e.key);
+    pressed.splice(-secretCode.length - 1, pressed.length - secretCode.length);
+    //I still don't get why we are going from the back of the array
+    //if you keep typing it kicks out the first thing in the array, but don't know why this is better then going from the front
+
+    console.log(pressed);
+
+    if (pressed.join('') == secretCode){
+      console.log('nailed it');
+      document.getElementById('body').classList.add('cat');
+    }
+    //he used the pressed.join('').includes(secretCode)). Not sure why that is better?
+  } )
 </script>
 </body>
 </html>
